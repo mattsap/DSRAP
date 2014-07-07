@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-
+	
 public class Experiment {
 	public int ticks;
 	public int maxTicks;
