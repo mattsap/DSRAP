@@ -2,15 +2,33 @@ import java.util.ArrayList;
 import java.util.Random;
 public class TaskGenerator {
 
+	/**
+	 * returns a random int in the range of [min, max] 
+	 * 
+	 * @param min lowest value for random number
+	 * @param max highest value for random number
+	 * @return int a random int in [min, max]
+	 */
+	protected static int random(int min, int max) {
+		return min + (int) (Math.random() * ((max - min) + 1));
+	}
 	/*
 	 * Max, min average load scheduleability: start, deadline, duration, max
 	 * span, predictability: start time, delta time, Time Pressure: latest start
 	 * time
 	 */
-	public static int random(int min, int max) {
-		return min + (int) (Math.random() * ((max - min) + 1));
-	}
-
+	
+	/**
+	 * Generates multiple tasks sets from specified distributions within a range of predefined areas of interests and writes their associated visuals and tasks to file
+	 * 
+	 * @param numberOfTasks number of tasks in any of the generated task sets
+	 * @param endTime last time unit (exclusive) in the simulation, [0, endTime).
+	 * @param outputDirectory base directory of the experimentation folder
+	 * @deprecated This code uses preliminary task generation and NEEDS to be updated through abstraction and generalization of task set patterns
+	 * @see  TaskSet#writeVisualToFile(String,int)
+	 * @see  TaskSet#writeToFileForTaskSetGeneration(int,int, String)
+	 * 
+	 */
 	public static void generateTasks(int numberOfTasks, int endTime, String outputDirectory) {
 		ArrayList<Task> tasks = new ArrayList<Task>();
 		Random rand = new Random();
@@ -74,7 +92,16 @@ public class TaskGenerator {
 		System.out.println("finished generating task set file");
 	}
 
-	public static double[] gaussianDistribution(double peak,
+	/**
+	 * Creates a Gaussian distribution for numeric task features (such as Overlap and Time Pressure).
+	 * @see <a href="http://en.wikipedia.org/wiki/Gaussian_function">Guassian Function</a>
+	 * @param peak highest point on the gaussian curve
+	 * @param standardDev standard deviation on the gaussian curve
+	 * @param endTime last time unit (exclusive) in the simulation, [0, endTime).
+	 * @return a double[] which represents the gaussian value for every time unit (index in the array) on the Gaussian curve.
+	 * 
+	 */
+	protected static double[] gaussianDistribution(double peak,
 			double standardDev, int endTime) {
 		double[] distribution = new double[endTime];
 		int center = endTime / 2;
