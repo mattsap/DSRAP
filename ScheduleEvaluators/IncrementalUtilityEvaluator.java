@@ -1,14 +1,18 @@
 import java.util.ArrayList;
 
 public class IncrementalUtilityEvaluator implements ScheduleEvaluator {
-
+	
 	@Override
-	public double evaluate(ArrayList<Task> tasksConsidered, Schedule assignedSchedule) {
+	/** 
+	 * The score consists of the reward rate * time working on a task.
+	 * @return double that represents the score of the schedule. 
+	 */
+	public double evaluate(Schedule aSchedule) {
 		//return variable
 		double scheduledNetUtility = 0;
 		
-		
-		int[] assignments = assignedSchedule.getAssignments();
+		ArrayList<Task> tasksConsidered = aSchedule.getConsideredTasks();
+		int[] assignments = aSchedule.getAssignments();
 		boolean changedCurrentTask = true;
 		Task currentTask = null;
 		int currentTaskID = -1;

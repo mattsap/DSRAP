@@ -10,7 +10,7 @@ public class ScheduleEvaluationTest {
 	public void IncrementalUtilityEvaluatorTest() {
 		
 		IncrementalUtilityEvaluator iue = new IncrementalUtilityEvaluator();
-		Agent one = new Agent(5, iue);
+		Agent one = new Agent(iue);
 		Task t1 = new Task(3,3,5.0,10,0,new TaskType());
 		Task t2 = new Task(3,3,15.0,5,0,new TaskType());
 		Task t3 = new Task(3,3,10.0,1,0,new TaskType());
@@ -32,9 +32,9 @@ public class ScheduleEvaluationTest {
 		tasks.add(t3);
 		tasks.add(t4);
 
-		assertTrue(90.0 == iue.evaluate(tasks,s1));
-		assertTrue(50.0 == iue.evaluate(tasks,s2));
-		assertTrue(36.0 == iue.evaluate(tasks,s3));
-		assertTrue( 2.0 == iue.evaluate(tasks,s4));
+		assertTrue(90.0 == iue.evaluate(s1));
+		assertTrue(50.0 == iue.evaluate(s2));
+		assertTrue(36.0 == iue.evaluate(s3));
+		assertTrue( 2.0 == iue.evaluate(s4));
 	}
 }

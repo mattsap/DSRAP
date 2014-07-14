@@ -19,10 +19,10 @@ public class OptimalOnlineScheduler extends Scheduler {
 			return empty;
 		}
 		Schedule optimalSchedule = super.allPossibleSchedules.get(0);
-		double optimalScheduleValue = evaluator.evaluate(super.consideredTasks,
+		double optimalScheduleValue = evaluator.evaluate(//CHanged: super.consideredTasks,
 				optimalSchedule);
 		for (Schedule currentSchedule : super.allPossibleSchedules) {
-			double currentScheduleValue = evaluator.evaluate(super.consideredTasks,
+			double currentScheduleValue = evaluator.evaluate(//changed: super.consideredTasks,
 					currentSchedule);
 			if (currentScheduleValue > optimalScheduleValue) {
 				optimalSchedule = currentSchedule;

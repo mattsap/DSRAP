@@ -22,9 +22,9 @@ public class OptimalScheduler extends Scheduler{
 			return empty;
 		}
 		Schedule optimalSchedule = allPossibleSchedules.get(0);
-		double optimalScheduleValue = evaluator.evaluate(consideredTasks, optimalSchedule);
+		double optimalScheduleValue = evaluator.evaluate(/*changedconsideredTasks,*/ optimalSchedule);
 		for(Schedule currentSchedule: allPossibleSchedules){
-			double currentScheduleValue = evaluator.evaluate(consideredTasks, currentSchedule);
+			double currentScheduleValue = evaluator.evaluate(/*changedconsideredTasks,*/ currentSchedule);
 			if(currentScheduleValue > optimalScheduleValue){
 				optimalSchedule = currentSchedule;
 				optimalScheduleValue = currentScheduleValue;

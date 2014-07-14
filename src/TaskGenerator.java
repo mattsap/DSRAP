@@ -23,13 +23,13 @@ public class TaskGenerator {
 	 * 
 	 * @param numberOfTasks number of tasks in any of the generated task sets
 	 * @param endTime last time unit (exclusive) in the simulation, [0, endTime).
-	 * @param outputDirectory base directory of the experimentation folder
+	 * @param taskSetDirectory base directory of the experimentation folder
 	 * @deprecated This code uses preliminary task generation and NEEDS to be updated through abstraction and generalization of task set patterns
 	 * @see  TaskSet#writeVisualToFile(String,int)
 	 * @see  TaskSet#writeToFileForTaskSetGeneration(int,int, String)
 	 * 
 	 */
-	public static void generateTasks(int numberOfTasks, int endTime, String outputDirectory) {
+	public static void generateTasks(int numberOfTasks, int endTime, String taskSetDirectory) {
 		ArrayList<Task> tasks = new ArrayList<Task>();
 		Random rand = new Random();
 		
@@ -58,8 +58,8 @@ public class TaskGenerator {
 							+ flexibility);
 				}
 				TaskSet currentTaskSet = new TaskSet(tasks);
-				currentTaskSet.writeToFileForTaskSetGeneration(taskSetID, endTime, outputDirectory + "\\taskSetsTrain"+numberOfTasks+".txt");
-				currentTaskSet.writeVisualToFile(outputDirectory+"\\size"+numberOfTasks+"\\visual"+currentTaskSet.getTaskSetID()+".txt", numberOfTasks);
+				currentTaskSet.writeToFileForTaskSetGeneration(taskSetID, endTime, taskSetDirectory + "\\taskSetsTrain"+numberOfTasks+".txt");
+				currentTaskSet.writeVisualToFile(taskSetDirectory+"\\size"+numberOfTasks+"\\visual"+currentTaskSet.getTaskSetID()+".txt");
 				taskSetID++;
 			}
 		}
@@ -82,8 +82,8 @@ public class TaskGenerator {
 					}
 					TaskSet currentTaskSet = new TaskSet(tasks);
 					
-					currentTaskSet.writeToFileForTaskSetGeneration(taskSetID, endTime, outputDirectory + "\\taskSetsTrain"+numberOfTasks+".txt");
-					currentTaskSet.writeVisualToFile(outputDirectory+"\\size"+numberOfTasks+"\\visual"+currentTaskSet.getTaskSetID()+".txt", numberOfTasks);
+					currentTaskSet.writeToFileForTaskSetGeneration(taskSetID, endTime, taskSetDirectory + "\\taskSetsTrain"+numberOfTasks+".txt");
+					currentTaskSet.writeVisualToFile(taskSetDirectory+"\\size"+numberOfTasks+"\\visual"+currentTaskSet.getTaskSetID()+".txt");
 					
 					taskSetID++;
 				}

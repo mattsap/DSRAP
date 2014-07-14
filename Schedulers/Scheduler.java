@@ -13,7 +13,7 @@ public abstract class Scheduler {
 		// saves memory/time on smart assignment--considers tasks that a
 		scheduleTime = maxScheduledTime;
 		allPossibleSchedules = new ArrayList<Schedule>();
-		ArrayList<Task> noScheduledTasks = new ArrayList<Task>();
+		ArrayList<Task> emptyTaskSet = new ArrayList<Task>();
 		tasks = new ArrayList<Task>();
 		tasks.addAll(itasks);
 
@@ -22,13 +22,15 @@ public abstract class Scheduler {
 		for (int t = 0; t < maxScheduledTime + 1; t++) {
 			schedule[t] = -1;
 		}
-		try{
-		setSchedules(schedule, tasks, noScheduledTasks, 0);
-		}
-		catch(Error e){
-			while(allPossibleSchedules.size() > 0){ // free up all memory, solution couldn't be solved
+		try {
+			setSchedules(schedule, tasks, emptyTaskSet, 0);
+		} catch (Error e) {
+			// free up all memory, solution couldn't be
+			// solved
+			while (allPossibleSchedules.size() > 0) { 
 				allPossibleSchedules.remove(0);
 			}
+			System.out.println("scheduler couldn't solve the problem");
 		}
 		consideredTasks = tasks;
 	}
@@ -39,7 +41,8 @@ public abstract class Scheduler {
 
 	public abstract void setSchedules(int[] schedule,
 			ArrayList<Task> tasksToBeScheduled,
-			ArrayList<Task> tasksAlreadyScheduled, int currentTime) throws Error;
+			ArrayList<Task> tasksAlreadyScheduled, int currentTime)
+			throws Error;
 
 	// fits if the all the spaces from currentTime to currentTime + duration is
 	// -1. otherwise doesn't fit

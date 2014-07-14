@@ -26,7 +26,8 @@ public class Main {
 		 * Environment variables: task distribution, task types. described in
 		 * lesser's paper.
 		 */
-
+	
+		/*
 		int maxScheduledTime = 35;
 		int numberOfTasks = 10;
 		String taskSetDirectory = "C:\\Users\\Matthew\\Dropbox\\School\\Research\\DSRAPResources";
@@ -61,8 +62,8 @@ public class Main {
 			System.out.println("could not read file " + taskSetFileName);
 			e.printStackTrace();
 		}
-		
+		*/
 		System.out.println("system exit");
 	}
-
+	
 }

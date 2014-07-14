@@ -15,7 +15,11 @@ public class Agent {
 	protected double utility;
 	
 	//protected int numAllocatableTasks;
-	public Agent(int nt, ScheduleEvaluator e){
+	/**
+	 * @deprecated Replaced In future versions to accommodate multi agent coordination mechanism
+	 * @param e
+	 */
+	public Agent(ScheduleEvaluator e){
 		id = countAgents;
 		beliefs = new TreeMap<Integer, Belief>();
 		predictions = new TreeMap<Integer, Prediction>();
@@ -25,16 +29,17 @@ public class Agent {
 		utility = 0;
 		countAgents++;
 	}
-	public void setSchedule(Schedule s){
-		schedule = s;
+	public void setSchedule(Schedule schedule){
+		this.schedule = schedule;
 	}
+	/*
 	public void act(int ticks){
 		Task currentTask = schedule.getTask(ticks);
 		if(currentTask != null){
 			this.addUtility(currentTask.getRewardRate());
 		}
 	}
-	
+	*/
 	public void addBelief(Belief b){
 		beliefs.put(b.getID(),b);
 	}
